@@ -10,7 +10,7 @@ const bookRouter = express.Router();
 bookRouter.use(bodyParser.json());
 
 bookRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+.options(cors.cors, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req,res,next) => {
     Books.find(req.query)
       .then(
@@ -36,11 +36,11 @@ bookRouter.route('/')
       )
       .catch((err) => next(err));
   })
-  .put(cors.corsWithOptions,authenticate.verifyUser, (req, res, next) => {
+  .put(cors.cors,authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /books');
   })
-  .delete(cors.corsWithOptions,authenticate.verifyUser, (req, res, next) => {
+  .delete(cors.cors,authenticate.verifyUser, (req, res, next) => {
     Books.remove({})
       .then(
         (resp) => {
@@ -54,7 +54,7 @@ bookRouter.route('/')
   });
 
 bookRouter.route('/:bookId')
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+.options(cors.cors, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req,res,next) => {
     Books.findById(req.params.bookId)
       .then(
@@ -67,11 +67,11 @@ bookRouter.route('/:bookId')
       )
       .catch((err) => next(err));
   })
-  .post(cors.corsWithOptions,authenticate.verifyUser, (req, res, next) => {
+  .post(cors.cors,authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 403;
     res.end('POST operation not supported on /books/' + req.params.bookId);
   })
-  .put(cors.corsWithOptions,authenticate.verifyUser,  (req, res, next) => {
+  .put(cors.cors,authenticate.verifyUser,  (req, res, next) => {
     Books.findByIdAndUpdate(
       req.params.bookId,
       {
@@ -89,7 +89,7 @@ bookRouter.route('/:bookId')
       )
       .catch((err) => next(err));
   })
-  .delete(cors.corsWithOptions,authenticate.verifyUser, (req, res, next) => {
+  .delete(cors.cors,authenticate.verifyUser, (req, res, next) => {
     Books.findByIdAndRemove(req.params.bookId)
       .then(
         (resp) => {
