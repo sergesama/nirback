@@ -8,7 +8,7 @@ var User = require('../models/user');
 
 router.use(bodyParser.json());
 /* GET users listing. */
-router.options('*',cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+router.options('*',cors.cors, (req, res) => { res.sendStatus(200); })
 router.get('/',authenticate.verifyUser, authenticate.verifyAdmin, (req,res,next) => {
   User.find({})
     .then(
@@ -22,7 +22,7 @@ router.get('/',authenticate.verifyUser, authenticate.verifyAdmin, (req,res,next)
     .catch((err) => next(err));
 });
 
-router.post('/signup',cors.corsWithOptions, (req, res, next) => {
+router.post('/signup',cors.cors, (req, res, next) => {
   User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
     if (err) {
       res.statusCode = 500;
@@ -48,7 +48,7 @@ router.post('/signup',cors.corsWithOptions, (req, res, next) => {
   });
 });
 
-router.post('/login',cors.corsWithOptions,(req, res,next) => {
+router.post('/login',cors.cors,(req, res,next) => {
 	passport.authenticate('local', (err,user,info)=>{
 		if(err)
 			return next(err);
