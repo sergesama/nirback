@@ -13,7 +13,7 @@ favoriteRouter.use(bodyParser.json());
 
 favoriteRouter.route('/')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-.get(cors.corsWithOptions,authenticate.verifyUser, (req,res,next) => {
+.get(cors.cors,authenticate.verifyUser, (req,res,next) => {
     console.log("GET " + req.user._id)
     Favorites.findOne({user: req.user._id})
     .populate('user')
@@ -25,7 +25,7 @@ favoriteRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-.post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+.post(cors.cors, authenticate.verifyUser, (req, res, next) => {
     Favorites.findOne({user: req.user._id})
     .then((favorite) => {
         if (favorite) {
@@ -71,11 +71,11 @@ favoriteRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));  
 })
-.put(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+.put(cors.cors, authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /favorites');
 })
-.delete(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+.delete(cors.cors, authenticate.verifyUser, (req, res, next) => {
     /* TODO доработать удаление Любимого */
     Favorites.findOneAndRemove({"user": req.user._id})
     .then((favorites) => {
@@ -119,7 +119,7 @@ favoriteRouter.route('/:bookId')
     }, (err) => next(err))
     .catch((err) => next(err))
 })
-.post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+.post(cors.cors, authenticate.verifyUser, (req, res, next) => {
     Favorites.findOne({user: req.user._id})
     .then((favorite) => {
         if (favorite) {            
@@ -153,11 +153,11 @@ favoriteRouter.route('/:bookId')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-.put(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+.put(cors.cors, authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /favorites/'+ req.params.bookId);
 })
-.delete(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+.delete(cors.cors, authenticate.verifyUser, (req, res, next) => {
     Favorites.findOne({user: req.user._id})
     .then((favorite) => {
         if (favorite) {            
