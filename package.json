@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "ncu -u&&npm update&&npm install&&node ./bin/www"
   },
   "dependencies": {
     "express-session": "^1.17.1",
