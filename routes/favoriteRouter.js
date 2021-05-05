@@ -92,7 +92,7 @@ favoriteRouter.route('/')
 });
 
 favoriteRouter.route('/:bookId')
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+.options(cors.cors, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req,res,next) => {
     console.log("GET " + req.user._id)
     Favorites.findOne({user: req.user._id})
