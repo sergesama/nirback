@@ -29,8 +29,8 @@ var authenticate = require('./authenticate');
 // Connection URL
 const url = config.mongoUrl;
 const connect = mongoose.connect(url, {
-    useNewUrlParser: true
-
+    useNewUrlParser: true,
+    useUnifiedTopology: true
     /* other options */
   });
 
