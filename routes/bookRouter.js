@@ -23,7 +23,7 @@ bookRouter.route('/')
       )
       .catch((err) => next(err));
   })
-  .post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+  .post(cors.cors, authenticate.verifyUser, (req, res, next) => {
     Books.create(req.body)
       .then(
         (book) => {
