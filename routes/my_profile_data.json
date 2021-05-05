@@ -1,0 +1,77 @@
+{
+	"fullname":"Иванов Иван Иванович",
+	"personal_info":{
+		"birthdate":"13.03.2000",
+		"phonenumber":"8-999-999-99-99",
+		"email":"sergesamas@gmail.com",
+		"family_status":"Женат",
+		"number_of_children":"1",
+		"relatives":[
+		{
+			"relative_kinship":"Жена",
+			"relative_fullname":"Абрамова Анна Анастасьевна"
+		},
+		{
+			"relative_kinship":"Сын",
+			"relative_fullname":"Петров Пётр Иванович"
+		}
+		]
+	},
+	"documents_data":{
+		"SNILS":"12345",
+		"INN":"987654321",
+		"pasport_data":"1234567890"
+	},
+	"address_data":{
+		"registration_address":"адрес регистрации",
+		"actual_address":"адрес фактического проживания"
+	},
+	"rewards_data":[
+		{
+			"reward_date":"дата награды 1",
+			"reward_name":"Вид награды 1"
+		},
+		{
+			"reward_date":"дата награды 2",
+			"reward_name":"Вид награды 2"
+		}
+	],
+	"violations_data":[
+		{
+			"violation_date":"дата нарушения 1",
+			"violation_name":"Вид нарушения 1"
+		},
+		{
+			"violation_date":"дата нарушения 2",
+			"violation_name":"Вид нарушения 2"
+		}
+	],
+	"disabilities_data":[
+		{
+			"disability_end_date":"дата истечения 1",
+			"disability_group_category":"группа и категория 1"
+		},
+		{
+			"disability_end_date":"дата истечения 2",
+			"disability_group_category":"группа и категория 2"
+		}
+	],
+	"educations_data":[
+		{
+			"education_type":"Вид образовния 1",
+			"education_institution":"Учебное заведение 1",
+			"education_specialization":"Специальность 1",
+			"education_qualification":"Квалификация 1",
+			"education_document":"Документ 1",
+			"education_document_number":"Номер документа 1"
+		},
+		{
+			"education_type":"Вид образовния 2",
+			"education_institution":"Учебное заведение 2",
+			"education_specialization":"Специальность 2",
+			"education_qualification":"Квалификация 2",
+			"education_document":"Документ 2",
+			"education_document_number":"Номер документа 2"
+		}
+	]
+	}
