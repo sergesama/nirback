@@ -24,13 +24,14 @@ competenceRouter.route('/')
       .catch((err) => next(err));
   })
   .post(cors.cors, authenticate.verifyUser, (req, res, next) => {
+      console.log("request_body " +req.body)
     Competences.create(req.body)
       .then(
-        (book) => {
-          console.log('book Created ', book);
+        (competence) => {
+          console.log('competence Created ', competence);
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
-          res.json(book);
+          res.json(competence);
         },
         (err) => next(err)
       )
@@ -58,10 +59,10 @@ competenceRouter.route('/:competenceId')
 .get(cors.cors, (req,res,next) => {
     Competences.findById(req.params.competenceId)
       .then(
-        (book) => {
+        (competence) => {
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
-          res.json(book);
+          res.json(competence);
         },
         (err) => next(err)
       )
@@ -80,10 +81,10 @@ competenceRouter.route('/:competenceId')
       { new: true }
     )
       .then(
-        (book) => {
+        (competence) => {
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
-          res.json(book);
+          res.json(competence);
         },
         (err) => next(err)
       )
