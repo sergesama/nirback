@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var dishRouter = require('./routes/dishRouter');
 var bookRouter = require('./routes/bookRouter');
+var competenceRouter = require('./routes/competenceRouter');
 var commentRouter = require('./routes/commentRouter');
 var promoRouter = require('./routes/promoRouter');
 var leaderRouter = require('./routes/leaderRouter');
@@ -58,6 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/dishes',dishRouter);
 app.use('/books',bookRouter);
+app.use('/competences',competenceRouter);
 app.use('/promotions',promoRouter);
 app.use('/leaders',leaderRouter);
 app.use('/imageUpload',uploadRouter);
