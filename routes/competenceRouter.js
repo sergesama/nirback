@@ -24,7 +24,7 @@ competenceRouter.route('/')
       .catch((err) => next(err));
   })
   .post(cors.cors, authenticate.verifyUser, (req, res, next) => {
-      console.log("request_body " +req.body)
+      console.log("request_body " +JSON.stringify(req.body))
     Competences.create(req.body)
       .then(
         (competence) => {
