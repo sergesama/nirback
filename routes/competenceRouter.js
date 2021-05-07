@@ -33,7 +33,7 @@ competenceRouter.route('/')
           res.setHeader('Content-Type', 'application/json');
           res.json(competence);
         },
-        (err) => next(err)
+        (err) => {next(err);console.log("ERR: " +err)}
       )
       .catch((err) => {next(err);console.log("ERR: " +err)});
   })
