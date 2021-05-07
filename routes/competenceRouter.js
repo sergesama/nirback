@@ -35,7 +35,7 @@ competenceRouter.route('/')
         },
         (err) => next(err)
       )
-      .catch((err) => next(err));
+      .catch((err) => {next(err);console.log("ERR: " +err)});
   })
   .put(cors.cors,authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 403;
