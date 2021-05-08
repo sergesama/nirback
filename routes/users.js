@@ -9,7 +9,7 @@ var User = require('../models/user');
 router.use(bodyParser.json());
 /* GET users listing. */
 router.options('*',cors.cors, (req, res) => { res.sendStatus(200); })
-router.get('/',authenticate.verifyUser, authenticate.verifyAdmin, (req,res,next) => {
+router.get('/',authenticate.verifyUser, (req,res,next) => {
   User.find({})
     .then(
       (users) => {
