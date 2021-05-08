@@ -9,10 +9,12 @@ var competenceprofilesSchema = new Schema({
     },
     competences: [{
         name:{
-            type: String
+            type: String,
+            required: true
         },
         weight:{
-            type: String
+            type: String,
+            required: true
         }
     }]  
 }, {
