@@ -38,9 +38,6 @@ assessmentRouter.route('/')
             .then(
                 (assessmentprofile) => {
                     console.log('assessmentprofile Created ', assessmentprofile);
-                    res.statusCode = 200;
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(assessment);
                 }
             ).catch((err) => {next(err);console.log("ERR: " +err)});
           })
