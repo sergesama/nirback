@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('./cors');
 var authenticate = require('../authenticate');
 const Assessments = require('../models/assessments');
+const AssessmentProfiles = require('../models/assessmentprofiles');
 
 const assessmentRouter = express.Router();
 
@@ -25,21 +26,28 @@ assessmentRouter.route('/')
   })
   .post(cors.cors, authenticate.verifyUser, (req, res, next) => {
       console.log("request_body " +JSON.stringify(req.body))
-    Assessments.create(req.body)
+        Assessments.create(req.body)
       .then(
         (assessment) => {
           console.log('assessment Created ', assessment);
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
           res.json(assessment);
+          assessment.evaluators.map(evaluator => {
+            AssessmentProfiles.create({"assessment":assessment._id, "evaluator":evaluator})
+            .then(
+                (assessmentprofile) => {
+                    console.log('assessmentprofile Created ', assessmentprofile);
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(assessment);
+                }
+            ).catch((err) => {next(err);console.log("ERR: " +err)});
+          })
+          
+
         },
         (err) => {next(err);console.log("ERR: " +err)}
-      )
-      .then(
-        (assessment) => {
-            console.log('assessment test ', assessment);
-          },
-          (err) => {next(err);console.log("ERR: " +err)}
       )
       .catch((err) => {next(err);console.log("ERR: " +err)});
   })
