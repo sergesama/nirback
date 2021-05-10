@@ -7,6 +7,11 @@ var assessmentprofilesSchema = new Schema({
         required: true,
         ref: 'Assessments'
     },
+    competence_profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Competenceprofiles'
+    },
     evaluator:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
