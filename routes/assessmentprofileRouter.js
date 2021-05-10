@@ -17,8 +17,12 @@ assessmentprofileRouter.route('/')
     .populate('assessment')
     .populate('evaluator')
     .populate('evaluated')
-    .populate('competence_profile')
-    .populate('competence_profile.competences.competence_id')
+    .populate({
+        path: "competence_profile", 
+        populate: {
+           path: "competences.competence_id" 
+        }
+     })
       .then(
         (assessmentprofiles) => {
           res.statusCode = 200;
