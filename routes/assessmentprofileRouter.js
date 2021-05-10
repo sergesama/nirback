@@ -17,15 +17,12 @@ assessmentprofileRouter.route('/')
     .populate('assessment')
     .populate('evaluator')
     .populate('evaluated')
-    .populate('competence_profile').exec(function (err, docs) {
-        console.log("1111")
-        console.log(err)
-        console.log(docs)
-        Competenceprofiles.populate(docs, {
-          path: 'competence_profile._competence',
-        });
-        console.log("111122222")
-    })
+    .populate({
+        path: "competence_profile", // populate blogs
+        populate: {
+           path: "_competence" // in blogs, populate comments
+        }
+     })
       .then(
         (assessmentprofiles) => {
           res.statusCode = 200;
