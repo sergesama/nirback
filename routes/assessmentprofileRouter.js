@@ -18,9 +18,9 @@ assessmentprofileRouter.route('/')
     .populate('evaluator')
     .populate('evaluated')
     .populate({
-        path: "competence_profile", // populate blogs
+        path: "competence_profile", 
         populate: {
-           path: "_competence" // in blogs, populate comments
+           path: "competence"
         }
      })
       .then(
