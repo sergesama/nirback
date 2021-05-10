@@ -18,7 +18,8 @@ assessmentprofileRouter.route('/')
     .populate('evaluator')
     .populate('evaluated')
     .populate('competence_profile').exec(function (err, docs) {
-        
+        console.log("1111")
+        console.log(err)
         Competenceprofiles.populate(docs, {
           path: 'competence_profile._competence',
         });
