@@ -34,7 +34,7 @@ assessmentRouter.route('/')
           res.setHeader('Content-Type', 'application/json');
           res.json(assessment);
           assessment.evaluators.map(evaluator => {
-            AssessmentProfiles.create({"assessment":assessment._id,"competence_profile":assessment.competence_profile, "evaluator":evaluator})
+            AssessmentProfiles.create({"assessment":assessment._id,"competence_profile":assessment.competence_profile, "evaluated":assessment.evaluated, "evaluator":evaluator})
             .then(
                 (assessmentprofile) => {
                     console.log('assessmentprofile Created ', assessmentprofile);
