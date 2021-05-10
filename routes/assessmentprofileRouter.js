@@ -15,6 +15,7 @@ assessmentprofileRouter.route('/')
     AssessmentProfiles.find(req.query)
     .populate('assessment')
     .populate('evaluator')
+    .populate('evaluated')
     .populate('competence_profile')
       .then(
         (assessmentprofiles) => {
