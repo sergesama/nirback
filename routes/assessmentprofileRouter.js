@@ -13,6 +13,8 @@ assessmentprofileRouter.route('/')
 .options(cors.cors, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req,res,next) => {
     AssessmentProfiles.find(req.query)
+    .populate('assessment')
+    .populate('evaluator')
       .then(
         (assessmentprofiles) => {
           res.statusCode = 200;
