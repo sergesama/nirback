@@ -20,7 +20,7 @@ assessmentprofileRouter.route('/')
     .populate({
         path: "competence_profile", 
         populate: {
-           path: "competence"
+           path: "competences"
         }
      })
       .then(
