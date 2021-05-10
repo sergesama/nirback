@@ -20,6 +20,7 @@ assessmentprofileRouter.route('/')
     .populate('competence_profile').exec(function (err, docs) {
         console.log("1111")
         console.log(err)
+        console.log(docs)
         Competenceprofiles.populate(docs, {
           path: 'competence_profile._competence',
         });
