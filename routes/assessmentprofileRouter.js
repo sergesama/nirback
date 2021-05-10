@@ -24,6 +24,7 @@ assessmentprofileRouter.route('/')
         Competenceprofiles.populate(docs, {
           path: 'competence_profile._competence',
         });
+        console.log("111122222")
     })
       .then(
         (assessmentprofiles) => {
