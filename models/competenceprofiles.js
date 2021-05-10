@@ -8,9 +8,10 @@ var competenceprofilesSchema = new Schema({
         unique: true
     },
     competences: [{
-        name:{
-            type: String,
-            required: true
+        _competence:{
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Competences'
         },
         weight:{
             type: String,

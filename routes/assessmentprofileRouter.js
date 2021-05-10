@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('./cors');
 var authenticate = require('../authenticate');
 const AssessmentProfiles = require('../models/assessmentprofiles');
+const Competenceprofiles = require('../models/competenceprofiles');
 
 const assessmentprofileRouter = express.Router();
 
@@ -16,7 +17,12 @@ assessmentprofileRouter.route('/')
     .populate('assessment')
     .populate('evaluator')
     .populate('evaluated')
-    .populate('competence_profile')
+    .populate('competence_profile').exec(function (err, docs) {
+        assert.ifError(err);
+        Competenceprofiles.populate(docs, {
+          path: 'competence_profile._competence',
+        }, callback);
+    })
       .then(
         (assessmentprofiles) => {
           res.statusCode = 200;
