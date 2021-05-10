@@ -21,7 +21,7 @@ assessmentprofileRouter.route('/')
         
         Competenceprofiles.populate(docs, {
           path: 'competence_profile._competence',
-        }, callback);
+        });
     })
       .then(
         (assessmentprofiles) => {
