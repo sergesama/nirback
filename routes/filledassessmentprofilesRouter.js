@@ -21,7 +21,12 @@ filledassessmentprofilesRouter.route('/')
          path: "competence_profile" 
       }
    })
-    .populate()
+    .populate({
+      path: 'assessmentProfileId', 
+      populate: {
+         path: "evaluator" 
+      }
+   })
     .populate({
         path: "competences", 
         populate: {

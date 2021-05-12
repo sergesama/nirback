@@ -9,7 +9,7 @@ var assessmentsSchema = new Schema({
     competence_profile:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'Competences'
+        ref: 'Competenceprofiles'
     },
     evaluated:{
         type: mongoose.Schema.Types.ObjectId,
