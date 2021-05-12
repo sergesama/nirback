@@ -14,6 +14,7 @@ assessmentRouter.route('/')
 .options(cors.cors, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req,res,next) => {
     Assessments.find(req.query)
+    .populate('evaluated')
       .then(
         (competences) => {
           res.statusCode = 200;
