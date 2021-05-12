@@ -15,7 +15,12 @@ filledassessmentprofilesRouter.route('/')
 .get(cors.cors, (req,res,next) => {
     FilledAssessmentProfiles.find(req.query)
     .populate('assessmentId')
-    .populate('assessmentProfileId')
+    .populate({
+      path: 'assessmentProfileId', 
+      populate: {
+         path: "evaluator" 
+      }
+   })
     .populate({
         path: "competences", 
         populate: {
