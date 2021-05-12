@@ -21,6 +21,10 @@ var assessmentprofilesSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
+    },
+    filled:{
+        type:Boolean,
+        default: false
     }
 }, {
     timestamps: true

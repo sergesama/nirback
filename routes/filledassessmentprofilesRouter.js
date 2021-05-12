@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('./cors');
 var authenticate = require('../authenticate');
-const FilledAssessmentProfiles = require('../models/assessmentprofiles');
+const FilledAssessmentProfiles = require('../models/filledassessmentprofiles');
+const AssessmentProfiles = require('../models/assessmentprofiles');
 
 const filledassessmentprofilesRouter = express.Router();
 
@@ -40,9 +41,12 @@ filledassessmentprofilesRouter.route('/')
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(filledassessmentprofile);
-       
-        
-
+        AssessmentProfiles.findByIdAndUpdate(
+            { _id: filledassessmentprofile.assessmentProfileId },
+            { filled: true }
+          ) .then((AssessmentProfile) => {
+            console.log("AssessmentProfile changed :" + AssessmentProfile)  ;            
+        }, (err) => next(err));;
       },
       (err) => {next(err);console.log("ERR: " +err)}
     )
