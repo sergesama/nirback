@@ -13,8 +13,9 @@ assessmentprofileRouter.use(bodyParser.json());
 assessmentprofileRouter.route('/')
 .options(cors.cors, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req,res,next) => {
-  
-    AssessmentProfiles.find({filled:false})
+  console.log("req.query")
+  console.log(req.query)
+    AssessmentProfiles.find(req.query)
     .populate('assessment')
     .populate('evaluator')
     .populate('evaluated')
