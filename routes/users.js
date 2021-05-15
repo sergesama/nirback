@@ -67,6 +67,7 @@ router.post('/login',cors.cors,(req, res,next) => {
 			var token = authenticate.getToken({ _id: req.user._id });
 			res.statusCode = 200;
 			res.setHeader('Content-Type', 'application/json');
+      console.log(req.user)
 			res.json({ success: true, status: 'Login Successful!', token: token, userId: req.user._id, isAdmin: req.user.admin });
 		});
 	}) (req,res,next)
